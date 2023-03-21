@@ -25,6 +25,11 @@ enum supportSpawns
     COCA_COLA     = 3
 };
 
+enum spells
+{
+    BENCH_STUN = 35856
+};
+
 class pepsiman : public CreatureScript {
 
 public:
@@ -38,6 +43,17 @@ public:
         {
             ScriptedAI::JustEngagedWith(who);
             events.ScheduleEvent(INTRO_EVENT, 2s, 0, 0);
+        }
+
+        void Reset() override
+        {
+            ScriptedAI::Reset();
+            if (me->IsVisible())
+            {
+                me->SetReactState(REACT_AGGRESSIVE);
+            }
+            events.Reset();
+            me->SendClearTarget();
         }
 
         void UpdateAI(uint32 diff) override
@@ -58,7 +74,7 @@ public:
                         return;
                     }
                     //yell something
-                    //cast immunity spell or something
+                    //cast immunity spell or something (setimmunetoall)
                     events.ScheduleEvent(MUSICAL_BENCHES, 2s, 0, 0);
                     break;
                 case MUSICAL_BENCHES:
@@ -68,6 +84,12 @@ public:
                     break;
                 }
             }
+            if (!UpdateVictim())
+            {
+                return;
+            }
+
+            DoMeleeAttackIfReady();
         }
 
     private:
