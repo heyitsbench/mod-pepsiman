@@ -8,9 +8,21 @@ enum creatureIDs
 {
     GOOD_BENCH     = 880000,
     BAD_BENCH      = 880001,
+    
     COLA_CEO       = 880002,
+    
     MINI_ELEMENTAL = 880003,
-    DR_ELEMENTAL   = 880004
+    DR_ELEMENTAL   = 880004,
+    
+    VENDOR_WARRIOR = 880005,
+    VENDOR_PALADIN = 880006,
+    VENDOR_HUNTER  = 880007,
+    VENDOR_ROGUE   = 880008,
+    VENDOR_PRIEST  = 880009,
+    VENDOR_SHAMAN  = 880010,
+    VENDOR_MAGE    = 880011,
+    VENDOR_WARLOCK = 880012,
+    VENDOR_DRUID   = 880013
 };
 
 enum phaseEvents
@@ -36,9 +48,9 @@ enum supportSpawns
 
 enum benchGObjects
 {
-    BENCHED_GOBJECT = 1,
-    NORMAL_BENCH    = 2,
-    CURSED_BENCH    = 3
+    BENCHED_GOBJECT = 880000,
+    NORMAL_BENCH    = 880001,
+    CURSED_BENCH    = 880002
 };
 
 enum spells
